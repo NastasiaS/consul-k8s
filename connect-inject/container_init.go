@@ -117,7 +117,7 @@ func (h *Handler) containerInit(pod *corev1.Pod) (corev1.Container, error) {
 // initContainerCommandTpl is the template for the command executed by
 // the init container.
 const initContainerCommandTpl = `
-export CONSUL_HTTP_ADDR="${HOST_IP}:8500"
+export CONSUL_HTTP_ADDR="${HOST_IP}:3004"
 export CONSUL_GRPC_ADDR="${HOST_IP}:8502"
 
 # Register the service. The HCL is stored in the volume so that

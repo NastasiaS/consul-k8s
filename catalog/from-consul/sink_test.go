@@ -3,7 +3,7 @@ package catalog
 import (
 	"testing"
 
-	"github.com/hashicorp/consul-k8s/helper/controller"
+	"github.com/NastasiaS/consul-k8s/helper/controller"
 	"github.com/hashicorp/consul/testutil/retry"
 	"github.com/hashicorp/go-hclog"
 	"github.com/stretchr/testify/require"

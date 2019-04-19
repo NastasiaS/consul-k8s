@@ -43,7 +43,7 @@ func (h *Handler) containerSidecar(pod *corev1.Pod) corev1.Container {
 }
 
 const sidecarPreStopCommand = `
-export CONSUL_HTTP_ADDR="${HOST_IP}:8500"
+export CONSUL_HTTP_ADDR="${HOST_IP}:3004"
 /consul/connect-inject/consul services deregister \
   /consul/connect-inject/service.hcl
 `

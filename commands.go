@@ -3,10 +3,10 @@ package main
 import (
 	"os"
 
-	cmdInjectConnect "github.com/hashicorp/consul-k8s/subcommand/inject-connect"
-	cmdSyncCatalog "github.com/hashicorp/consul-k8s/subcommand/sync-catalog"
-	cmdVersion "github.com/hashicorp/consul-k8s/subcommand/version"
-	"github.com/hashicorp/consul-k8s/version"
+	cmdInjectConnect "github.com/NastasiaS/consul-k8s/subcommand/inject-connect"
+	cmdSyncCatalog "github.com/NastasiaS/consul-k8s/subcommand/sync-catalog"
+	cmdVersion "github.com/NastasiaS/consul-k8s/subcommand/version"
+	"github.com/NastasiaS/consul-k8s/version"
 	"github.com/mitchellh/cli"
 )
 

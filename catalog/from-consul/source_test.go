@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	fromk8s "github.com/hashicorp/consul-k8s/catalog/from-k8s"
+	fromk8s "github.com/NastasiaS/consul-k8s/catalog/from-k8s"
 	"github.com/hashicorp/consul/agent"
 	"github.com/hashicorp/consul/api"
 	"github.com/hashicorp/consul/testrpc"

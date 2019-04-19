@@ -28,30 +28,30 @@ Improvements:
 
 Improvements:
 
-* Clarify the format of the `consul-write-interval` flag for `consul-k8s` [[GH 61](https://github.com/hashicorp/consul-k8s/issues/61)]
+* Clarify the format of the `consul-write-interval` flag for `consul-k8s` [[GH 61](https://github.com/NastasiaS/consul-k8s/issues/61)]
 * Add datacenter support to inject annotation
 * Update connect injector logging to remove healthcheck log spam and make important messages more visible
 
 Bug fixes:
 
-* Fix service registration naming when using Connect [[GH 36](https://github.com/hashicorp/consul-k8s/issues/36)]
-* Fix catalog sync so that agents don't incorrectly deregister Kubernetes services [[GH 40](https://github.com/hashicorp/consul-k8s/issues/40)][[GH 59](https://github.com/hashicorp/consul-k8s/issues/59)]
-* Fix performance issue for the k8s -> Consul catalog sync [[GH 60](https://github.com/hashicorp/consul-k8s/issues/60)]
+* Fix service registration naming when using Connect [[GH 36](https://github.com/NastasiaS/consul-k8s/issues/36)]
+* Fix catalog sync so that agents don't incorrectly deregister Kubernetes services [[GH 40](https://github.com/NastasiaS/consul-k8s/issues/40)][[GH 59](https://github.com/NastasiaS/consul-k8s/issues/59)]
+* Fix performance issue for the k8s -> Consul catalog sync [[GH 60](https://github.com/NastasiaS/consul-k8s/issues/60)]
 
 ## 0.4.0 (January 11, 2019)
 Improvements:
 
-* Supports a configurable tag for the k8s -> Consul sync [[GH 42](https://github.com/hashicorp/consul-k8s/issues/42)]
+* Supports a configurable tag for the k8s -> Consul sync [[GH 42](https://github.com/NastasiaS/consul-k8s/issues/42)]
 
 Bug fixes:
 
-* Register NodePort services with the node's ip address [[GH 8](https://github.com/hashicorp/consul-k8s/issues/8)]
-* Add the metadata/annotations field if needed before patching annotations [[GH 20](https://github.com/hashicorp/consul-k8s/issues/20)]
+* Register NodePort services with the node's ip address [[GH 8](https://github.com/NastasiaS/consul-k8s/issues/8)]
+* Add the metadata/annotations field if needed before patching annotations [[GH 20](https://github.com/NastasiaS/consul-k8s/issues/20)]
 
 ## 0.3.0 (December 7, 2018)
 Improvements:
 
-* Support syncing ClusterIP services [[GH 4](https://github.com/hashicorp/consul-k8s/issues/4)]
+* Support syncing ClusterIP services [[GH 4](https://github.com/NastasiaS/consul-k8s/issues/4)]
 
 Bug fixes:
 
@@ -62,7 +62,7 @@ Bug fixes:
 
 Bug fixes:
 
-* Fix single direction catalog sync [[GH 7](https://github.com/hashicorp/consul-k8s/issues/7)]
+* Fix single direction catalog sync [[GH 7](https://github.com/NastasiaS/consul-k8s/issues/7)]
 
 ## 0.2.0 (October 10, 2018)
 
