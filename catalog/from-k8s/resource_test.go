@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/consul-k8s/helper/controller"
+	"github.com/NastasiaS/consul-k8s/helper/controller"
 	"github.com/hashicorp/go-hclog"
 	"github.com/stretchr/testify/require"
 	apiv1 "k8s.io/api/core/v1"
@@ -402,7 +402,7 @@ func TestServiceResource_lbPort(t *testing.T) {
 	svc := testService("foo")
 	svc.Spec.Ports = []apiv1.ServicePort{
 		apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080)},
-		apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000)},
+		apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000)},
 	}
 	_, err := client.CoreV1().Services(metav1.NamespaceDefault).Create(svc)
 	require.NoError(err)
@@ -415,7 +415,7 @@ func TestServiceResource_lbPort(t *testing.T) {
 	require.Len(actual, 1)
 	require.Equal(80, actual[0].Service.Port)
 	require.Equal("80", actual[0].Service.Meta["port-http"])
-	require.Equal("8500", actual[0].Service.Meta["port-rpc"])
+	require.Equal("3004", actual[0].Service.Meta["port-rpc"])
 }
 
 // Test default port works with override annotation
@@ -438,7 +438,7 @@ func TestServiceResource_lbAnnotatedPort(t *testing.T) {
 	svc.Annotations[annotationServicePort] = "rpc"
 	svc.Spec.Ports = []apiv1.ServicePort{
 		apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080)},
-		apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000)},
+		apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000)},
 	}
 	_, err := client.CoreV1().Services(metav1.NamespaceDefault).Create(svc)
 	require.NoError(err)
@@ -449,9 +449,9 @@ func TestServiceResource_lbAnnotatedPort(t *testing.T) {
 	defer syncer.Unlock()
 	actual := syncer.Registrations
 	require.Len(actual, 1)
-	require.Equal(8500, actual[0].Service.Port)
+	require.Equal(3004, actual[0].Service.Port)
 	require.Equal("80", actual[0].Service.Meta["port-http"])
-	require.Equal("8500", actual[0].Service.Meta["port-rpc"])
+	require.Equal("3004", actual[0].Service.Meta["port-rpc"])
 }
 
 // Test annotated tags
@@ -606,7 +606,7 @@ func TestServiceResource_nodePort(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -710,7 +710,7 @@ func TestServiceResource_nodePort_singleEndpoint(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -821,7 +821,7 @@ func TestServiceResource_nodePortInitial(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -937,7 +937,7 @@ func TestServiceResource_nodePortAnnotatedPort(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -1053,7 +1053,7 @@ func TestServiceResource_nodePortUnnamedPort(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -1169,7 +1169,7 @@ func TestServiceResource_nodePort_internalOnlySync(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -1284,7 +1284,7 @@ func TestServiceResource_nodePort_externalFirstSync(t *testing.T) {
 			Type: apiv1.ServiceTypeNodePort,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080), NodePort: 30000},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000), NodePort: 30001},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000), NodePort: 30001},
 			},
 		},
 	})
@@ -1408,7 +1408,7 @@ func TestServiceResource_clusterIPMultiEndpoint(t *testing.T) {
 			Type: apiv1.ServiceTypeClusterIP,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080)},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000)},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000)},
 			},
 		},
 	})
@@ -1483,7 +1483,7 @@ func TestServiceResource_clusterIPAnnotatedPort(t *testing.T) {
 			Type: apiv1.ServiceTypeClusterIP,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Name: "http", Port: 80, TargetPort: intstr.FromInt(8080)},
-				apiv1.ServicePort{Name: "rpc", Port: 8500, TargetPort: intstr.FromInt(2000)},
+				apiv1.ServicePort{Name: "rpc", Port: 3004, TargetPort: intstr.FromInt(2000)},
 			},
 		},
 	})
@@ -1524,10 +1524,10 @@ func TestServiceResource_clusterIPAnnotatedPort(t *testing.T) {
 	require.Len(actual, 2)
 	require.Equal("foo", actual[0].Service.Service)
 	require.Equal("1.2.3.4", actual[0].Service.Address)
-	require.Equal(8500, actual[0].Service.Port)
+	require.Equal(3004, actual[0].Service.Port)
 	require.Equal("foo", actual[1].Service.Service)
 	require.Equal("2.3.4.5", actual[1].Service.Address)
-	require.Equal(8500, actual[1].Service.Port)
+	require.Equal(3004, actual[1].Service.Port)
 	require.NotEqual(actual[0].Service.ID, actual[1].Service.ID)
 }
 
@@ -1557,7 +1557,7 @@ func TestServiceResource_clusterIPUnnamedPorts(t *testing.T) {
 			Type: apiv1.ServiceTypeClusterIP,
 			Ports: []apiv1.ServicePort{
 				apiv1.ServicePort{Port: 80, TargetPort: intstr.FromInt(8080)},
-				apiv1.ServicePort{Port: 8500, TargetPort: intstr.FromInt(2000)},
+				apiv1.ServicePort{Port: 3004, TargetPort: intstr.FromInt(2000)},
 			},
 		},
 	})

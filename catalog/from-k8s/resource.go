@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/hashicorp/consul-k8s/helper/controller"
+	"github.com/NastasiaS/consul-k8s/helper/controller"
 	consulapi "github.com/hashicorp/consul/api"
 	"github.com/hashicorp/go-hclog"
 	apiv1 "k8s.io/api/core/v1"

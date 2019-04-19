@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hashicorp/consul-k8s/helper/coalesce"
+	"github.com/NastasiaS/consul-k8s/helper/coalesce"
 	"github.com/hashicorp/go-hclog"
 	apiv1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

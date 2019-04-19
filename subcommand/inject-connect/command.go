@@ -12,8 +12,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/hashicorp/consul-k8s/connect-inject"
-	"github.com/hashicorp/consul-k8s/helper/cert"
+	"github.com/NastasiaS/consul-k8s/connect-inject"
+	"github.com/NastasiaS/consul-k8s/helper/cert"
 	"github.com/hashicorp/consul/command/flags"
 	"github.com/hashicorp/go-hclog"
 	"github.com/mitchellh/cli"

@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/hashicorp/consul-k8s/version"
+	"github.com/NastasiaS/consul-k8s/version"
 	"github.com/mitchellh/cli"
 )
 
