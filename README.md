@@ -47,7 +47,7 @@ You will also need to install the Docker engine:
 Clone the repository:
 
 ```shell
-$ git clone https://github.com/hashicorp/consul-k8s.git
+$ git clone https://github.com/NastasiaS/consul-k8s.git
 ```
 
 To compile the `consul-k8s` binary for your local machine:
